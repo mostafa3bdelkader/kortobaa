@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kortobaa/constants.dart';
+import 'package:kortobaa/helpers/constants.dart';
 import 'package:kortobaa/presentation/widgets/posts_list.dart';
 import 'package:kortobaa/presentation/widgets/profile_details.dart';
 
@@ -32,6 +32,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  switchTabs(int index) {
+    if (index == 0) {
+      tabController.animateTo(0);
+    } else if (index == 1) {
+      tabController.animateTo(1);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         ),
       ),
-      drawer: CustomDrawer(),
+      drawer: CustomDrawer(function: switchTabs),
       body: TabBarView(
         controller: tabController,
         children: [

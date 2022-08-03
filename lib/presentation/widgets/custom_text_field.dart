@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../constants.dart';
+import '../../helpers/constants.dart';
 
 class CustomTextField extends StatefulWidget {
   final bool isPasswordField;
+  final TextEditingController textEditingController;
+  final Function(String value) validFunction;
 
   const CustomTextField({
+    required this.textEditingController,
+    required this.validFunction,
     this.isPasswordField = false,
     Key? key,
   }) : super(key: key);
@@ -23,7 +27,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: EdgeInsets.symmetric(vertical: 14.0.h),
       child: Opacity(
         opacity: 0.8,
-        child: TextField(
+        child: TextFormField(
+          controller: widget.textEditingController,
+          validator: (value) => widget.validFunction(value!),
           style: TextStyle(
             fontSize: 18,
           ),

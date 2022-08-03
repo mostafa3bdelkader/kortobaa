@@ -1,10 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../constants.dart';
+import '../../helpers/constants.dart';
 
 class ProfileDetails extends StatelessWidget {
-  const ProfileDetails({Key? key}) : super(key: key);
+  ProfileDetails({Key? key}) : super(key: key);
+  final user = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class ProfileDetails extends StatelessWidget {
           height: 0.125.sh,
         ),
         Text(
-          'اسم المستخدم',
+          user.currentUser?.displayName ?? '',
           style: TextStyle(
               color: kNavyBlue, fontSize: 18, fontWeight: FontWeight.w700),
         ),
@@ -50,7 +52,7 @@ class ProfileDetails extends StatelessWidget {
           height: 10,
         ),
         Text(
-          'User99@gmail.com',
+          user.currentUser?.email ?? '',
           style: TextStyle(
             color: kGrey,
             fontSize: 12,

@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kortobaa/presentation/screens/bookmarks_screen.dart';
 
-import '../../constants.dart';
+import '../../helpers/constants.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({
+  final firebaseAuth = FirebaseAuth.instance;
+  final Function function;
+  CustomDrawer({
+    required this.function,
     Key? key,
   }) : super(key: key);
 
@@ -32,7 +37,7 @@ class CustomDrawer extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'احمد كرم',
+                      FirebaseAuth.instance.currentUser?.displayName ?? '',
                       style: TextStyle(
                         fontSize: 18,
                         color: kOffWhite,
@@ -47,30 +52,36 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(
-                Icons.home,
-                color: kNavy,
-              ),
-              title: Text(
-                'الرئيسية',
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-            ),
+                leading: Icon(
+                  Icons.home,
+                  color: kNavy,
+                ),
+                title: Text(
+                  'الرئيسية',
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+                onTap: () {
+                  function(0);
+                  Scaffold.of(context).closeDrawer();
+                }),
             Divider(
               indent: 0.1.sw,
               endIndent: 0.1.sw,
               color: kGrey,
             ),
             ListTile(
-              leading: Icon(
-                Icons.person,
-                color: kNavy,
-              ),
-              title: Text(
-                'حسابي',
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-            ),
+                leading: Icon(
+                  Icons.person,
+                  color: kNavy,
+                ),
+                title: Text(
+                  'حسابي',
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+                onTap: () {
+                  function(1);
+                  Scaffold.of(context).closeDrawer();
+                }),
             Divider(
               indent: 0.1.sw,
               endIndent: 0.1.sw,
@@ -85,6 +96,13 @@ class CustomDrawer extends StatelessWidget {
                 'المحفوظات',
                 style: Theme.of(context).textTheme.subtitle2,
               ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => BookmarksScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),

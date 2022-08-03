@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "402428953309",
+    "project_id": "kortobaa-eef8e",
+    "storage_bucket": "kortobaa-eef8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402428953309:android:d3f6e5f320068422115134",
+        "android_client_info": {
+          "package_name": "com.example.kortobaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402428953309-84boe3c431ugp0humsp52sic2ulr020b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWMvdrBYdgHGE9X1pDA95EIhGAnCTTHGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402428953309-84boe3c431ugp0humsp52sic2ulr020b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

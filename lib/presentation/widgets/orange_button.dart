@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+import '../../helpers/constants.dart';
 
 class OrangeButton extends StatelessWidget {
   final String label;
